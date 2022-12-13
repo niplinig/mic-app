@@ -2,13 +2,13 @@ import { Button, Note, Spacer, Tabs, Input, Radio, Text, Pagination, Card, Grid,
 import { useEffect, useRef, useState } from "react";
 import { KeyCode } from "@geist-ui/core";
 
+let videoStart: string = '';
+let videoEnd: string = '';
+let reactionTime : string = '';
+let reactionStart: string = '';
+
 export default function App() {
-
-    let videoStart: string = '';
-    let videoEnd: string = '';
-    let reactionTime : string = '';
-    let reactionStart: string = '';
-
+    
     const video: any = useRef<HTMLVideoElement>(null);
 
     const { state, setState, bindings } = useTabs('1');
