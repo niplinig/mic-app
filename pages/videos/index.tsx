@@ -1,0 +1,109 @@
+import { Button, Note, Spacer, Tabs, Input, Radio, Text, Pagination, Card, Grid, Checkbox, useInput, useTabs, useRect, useKeyboard, useToasts } from "@geist-ui/core";
+import { useEffect, useRef, useState } from "react";
+import { KeyCode } from "@geist-ui/core";
+
+export default function App() {
+
+    let videoStart: string = '';
+    let videoEnd: string = '';
+    let reactionTime : string = '';
+    let reactionStart: string = '';
+
+    const video: any = useRef<HTMLVideoElement>(null);
+
+    const { state, setState, bindings } = useTabs('1');
+
+    const { setToast } = useToasts()
+
+    const togglePlay = async () => {
+        await video.current.play();
+    }
+
+    const detectVideoStarts = () => {
+        let date = new Date();
+        videoStart = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
+        console.log(`videoStart: ${videoStart}`);
+    }
+
+    useKeyboard(
+        () => {
+            if (video.current !== null) {
+                let date = new Date();
+                reactionTime = `${video.current.currentTime}`;
+                reactionStart = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
+                console.log(`reactionTime ${reactionTime}, reactionStart: ${reactionStart}`);
+                setToast({text: 'Reacción guardada', delay: 2000});
+            }
+        },
+        [KeyCode.KEY_R],
+    )
+
+    const detectVideoEnds = async () => {
+        let date = new Date();
+        videoEnd = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
+        console.log(`videoEnd: ${videoEnd}`);
+
+        postData();
+        changePage();
+    }
+
+    const changePage = () => {
+        setState('3');
+    }
+
+    const postData = async () => {
+
+        let age = localStorage.getItem('age');
+        let sex = localStorage.getItem('sex')
+
+        const response = await fetch('/api/reaction', {
+            method: 'POST',
+            body: JSON.stringify({
+                age: Number(age),
+                sex: sex,
+                videoStart: videoStart,
+                reactionTime: reactionTime,
+                reactionStart: reactionStart,
+                videoEnd: videoEnd,
+                videoNumber: Number(state),
+                videoName: video.current.id,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        const data = await response.json()
+        console.log(data);
+    }
+
+
+
+
+    return (
+
+        <div>
+            <Tabs {...bindings} initialValue="1" align="center" leftSpace={0}>
+                <Tabs.Item label="Inicio" value="1" >
+
+                </Tabs.Item>
+                <Tabs.Item label="Video 1" value="2">
+                    <video id="Conducir contra vía" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                        <source src='/assets/CCV.mp4' type="video/mp4" />
+                    </video>
+                    <Button onClick={togglePlay}>Play Video</Button>
+                </Tabs.Item>
+                <Tabs.Item label="Video 2" value="3">
+                </Tabs.Item>
+                <Tabs.Item label="Video 3" value="4">
+                </Tabs.Item>
+                <Tabs.Item label="Video 4" value="5">
+                </Tabs.Item>
+                <Tabs.Item label="Video 5" value="6">
+                </Tabs.Item>
+                <Tabs.Item label="Fin" value="7">
+                </Tabs.Item>
+            </Tabs>
+        </div>
+
+    );
+}
