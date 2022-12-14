@@ -28,11 +28,14 @@ export default function App() {
     useKeyboard(
         () => {
             if (video.current !== null) {
-                let date = new Date();
-                reactionTime = `${video.current.currentTime}`;
-                reactionStart = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
-                console.log(`reactionTime ${reactionTime}, reactionStart: ${reactionStart}`);
-                setToast({ text: 'Reacción guardada', delay: 2000 });
+                if (video.current.currentTime > 0 && !video.current.ended) {
+                    let date = new Date();
+                    reactionTime = `${video.current.currentTime}`;
+                    reactionStart = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
+                    console.log(`reactionTime ${reactionTime}, reactionStart: ${reactionStart}`);
+                    setToast({ text: 'Reacción guardada', delay: 2000 });
+                }
+
             }
         },
         [KeyCode.KEY_R],
@@ -49,7 +52,7 @@ export default function App() {
 
     const changePage = () => {
         let previus = state;
-        let result : string = `${Number(previus) + 1}`
+        let result: string = `${Number(previus) + 1}`
         setState(result);
     }
 
@@ -89,7 +92,7 @@ export default function App() {
                     <Display shadow caption={
                         <Button onClick={togglePlay}>Play Video</Button>
                     }>
-                        <video height="500rem" id="Conducir contra vía" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                        <video preload="auto" height="500rem" id="Conducir contra vía" ref={video} onDurationChange={detectVideoStarts} onEnded={detectVideoEnds}>
                             <source src='/assets/CCV.mp4' type="video/mp4" />
                         </video>
                     </Display>
@@ -98,7 +101,7 @@ export default function App() {
                     <Display shadow caption={
                         <Button onClick={togglePlay}>Play Video</Button>
                     }>
-                        <video height="500rem" id="Pasar Luz Roja 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                        <video preload="auto" height="500rem" id="Pasar Luz Roja 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
                             <source src='/assets/PLR1.mp4' type="video/mp4" />
                         </video>
                     </Display>
@@ -107,7 +110,7 @@ export default function App() {
                     <Display shadow caption={
                         <Button onClick={togglePlay}>Play Video</Button>
                     }>
-                        <video height="500rem" id="Exceso de velocidad" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                        <video preload="auto" height="500rem" id="Exceso de velocidad" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
                             <source src='/assets/EV.mp4' type="video/mp4" />
                         </video>
                     </Display>
@@ -116,7 +119,7 @@ export default function App() {
                     <Display shadow caption={
                         <Button onClick={togglePlay}>Play Video</Button>
                     }>
-                        <video height="500rem" id="Sin casco 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                        <video preload="auto" height="500rem" id="Sin casco 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
                             <source src='/assets/SC1.mp4' type="video/mp4" />
                         </video>
                     </Display>
@@ -125,7 +128,7 @@ export default function App() {
                     <Display shadow caption={
                         <Button onClick={togglePlay}>Play Video</Button>
                     }>
-                        <video height="500rem" id="Pasar Luz Roja 2" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                        <video preload="auto" height="500rem" id="Pasar Luz Roja 2" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
                             <source src='/assets/PLR2.mp4' type="video/mp4" />
                         </video>
                     </Display>
