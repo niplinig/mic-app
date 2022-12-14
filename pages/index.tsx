@@ -68,13 +68,13 @@ export default function App() {
               <Radio value="Femenino">Femenino</Radio>
               <Radio value="Masculino">Masculino</Radio>
             </Radio.Group>
-            <Text type="error">{sexErrorMsg}</Text>
+{/*             <Text type="error">{sexErrorMsg}</Text> */}
 
-            <Checkbox value="aceptar" onChange={checkHandler}>Aceptar</Checkbox>
-            <Text type="error">{checkErrorMsg}</Text>
+            <Checkbox onChange={checkHandler}>Aceptar</Checkbox>
+            {/* <Text type="error">{checkErrorMsg}</Text> */}
 
             <Link href="/videos/inicio">
-              <Button disabled={(ageErrorMsg || state == '' || sexErrorMsg || checkErrorMsg) ? true : false} width="100%" onClick={btnHandler}>
+              <Button disabled={(ageErrorMsg || state == '' || sex == '' || checkErrorMsg) ? true : false} width="100%" onClick={btnHandler}>
                 Continuar
               </Button>
             </Link>
