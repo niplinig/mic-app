@@ -1,24 +1,49 @@
-import { Button, Spacer, Input, Radio, Text, Card, Grid, Checkbox, useInput } from "@geist-ui/core";
-import { useEffect, useState } from "react";
+import { Divider, Button, Input, Radio, Text, Card, Grid, Checkbox, useInput } from "@geist-ui/core";
+import { useState } from "react";
 import Link from "next/link";
 
 export default function App() {
 
+  const [check, setCheck] = useState(false);
+
+  const checkHandler = (event: any) => {
+    console.log(event.target);
+    setCheck(event.target.checked);
+  }
+
+
+
   const { state, setState, reset, bindings } = useInput('');
 
-  useEffect(() => {
-    console.log(state), [state]
-  })
-
   const [sex, setSex] = useState('');
+
   const sexHandler = (value: any) => {
     setSex(value);
-    console.log(value);
   }
 
-  const checkHandler = (value: any) => {
-    console.log(value);
+  const validateAge = (inputAge: string) => {
+    if (inputAge != '') {
+      if (Number(inputAge) < 0 || Number(inputAge) == 0 || Number(inputAge) > 99) {
+        return 'Ingresar edad válida'
+      }
+    }
   }
+
+  const validateSex = (inputSex: string) => {
+    if (inputSex == '') {
+      return 'Seleccionar sexo'
+    }
+  }
+
+  const validateCheck = (inputCheck: boolean) => {
+    if (!inputCheck) {
+      return 'Tiene que aceptar los terminos para continuar'
+    }
+  }
+
+  const checkErrorMsg = validateCheck(check);
+  const ageErrorMsg = validateAge(state);
+  const sexErrorMsg = validateSex(sex);
 
   const btnHandler = () => {
     localStorage.setItem('age', state);
@@ -26,46 +51,39 @@ export default function App() {
   }
 
   return (
-
-    <div>
-      <Grid.Container alignItems="center" direction="column" alignContent="center" justify="center">
-
-        <Grid>
-          <Text h1>Bienvenido</Text>
-          <Text>Lorem ipsum dolor sit amet.</Text>
-        </Grid>
-
-        <Grid>
-          <Card>
-
+    <Grid.Container direction="row" alignContent="center" justify="center" height="100vh">
+      <Grid>
+        <Card>
+          <Card.Content>
+            <Text h3>Formulario de inicio</Text>
+            <Text>Por favor llena el siguiente formulario para poder continuar</Text>
+          </Card.Content>
+          <Divider h="1px" my={0} />
+          <Card.Content>
             <Text>Edad</Text>
-            <Input {...bindings} htmlType="number" width="100%" />
-
+            <Input type={ageErrorMsg ? "error" : "default"} {...bindings} htmlType="number" width="100%" maxLength={3} />
+            <Text type="error">{ageErrorMsg}</Text>
             <Text>Sexo</Text>
             <Radio.Group useRow value={sex} onChange={sexHandler}>
               <Radio value="Femenino">Femenino</Radio>
               <Radio value="Masculino">Masculino</Radio>
             </Radio.Group>
+            <Text type="error">{sexErrorMsg}</Text>
 
-            <Spacer h={2}></Spacer>
+            <Checkbox value="aceptar" onChange={checkHandler}>Aceptar</Checkbox>
+            <Text type="error">{checkErrorMsg}</Text>
 
-            <Checkbox.Group value={['aceptar']} onChange={checkHandler}>
-              <Checkbox value="aceptar">Aceptar</Checkbox>
-            </Checkbox.Group>
-
-            <Spacer h={1}></Spacer>
-
-            <Link href="/videos">
-              <Button width="100%" onClick={btnHandler}>
+            <Link href="/videos/inicio">
+              <Button disabled={(ageErrorMsg || state == '' || sexErrorMsg || checkErrorMsg) ? true : false} width="100%" onClick={btnHandler}>
                 Continuar
               </Button>
             </Link>
+          </Card.Content>
+        </Card>
+      </Grid>
+    </Grid.Container>
 
-          </Card>
-        </Grid>
-      </Grid.Container>
 
-    </div>
 
   );
 }
