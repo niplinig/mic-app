@@ -97,7 +97,7 @@ export default function App() {
             <Display width={80} shadow caption={
                 <Button onClick={togglePlay}>Reproducir video</Button>
             }>
-                <video preload="auto" id="Pasar la luz roja 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                <video preload="auto" height="720px" id="Pasar la luz roja 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
                     <source src='/exp/webm/PasarLaLuzRoja1.webm' type="video/webm" />
                     <source src='/exp/mp4/PasarLaLuzRoja1.mp4' type="video/mp4" />
                 </video>

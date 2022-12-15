@@ -95,7 +95,7 @@ export default function App() {
             <Display shadow caption={
                 <Button onClick={togglePlay}>Reproducir video</Button>
             }>
-                <video preload="auto" height="100vh" id="Exceso de velocidad" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                <video preload="auto" height="720px" id="Exceso de velocidad" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
                     <source src='/exp/mp4/ExcesoDeVelocidad.mp4' type="video/mp4" />
                     <source src='/exp/webm/ExcesoDeVelocidad.webm' type="video/webm" />
                 </video>

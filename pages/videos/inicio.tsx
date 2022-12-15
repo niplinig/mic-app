@@ -56,8 +56,8 @@ export default function App() {
                         <Card.Content>
                             <Text p>
                                 El experimento tiene una duración de 5 min aproximadamente, consiste en una serie de 5 videos
-                                a los cuales tiene que reaccionar. Cada video es una grabacion de cámaras de panel de vehículos o dashcams.
-                                Presione la tecla <Keyboard>R</Keyboard> de su teclado cuando preciba una <Link href="#" block onClick={openHandler}>infracción de tránsito</Link> en el video.
+                                a los cuales tiene que reaccionar. Cada video es una grabacion de cámaras de panel de vehículos o dashcams con una infracción.
+                                Presione la tecla <Keyboard>R</Keyboard> de su teclado cuando preciba la <Link href="#" block onClick={openHandler}>infracción de tránsito</Link> en el video.
                                 Espere hasta que termine el video para que se cargue el siguiente.
                             </Text>
                         </Card.Content>

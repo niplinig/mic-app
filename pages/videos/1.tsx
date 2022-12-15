@@ -93,7 +93,7 @@ export default function App() {
             <Display shadow caption={
                 <Button onClick={togglePlay}>Reproducir video</Button>
             }>
-                <video preload="auto" height="100vh" id="Conducir contra vía" ref={video} onDurationChange={detectVideoStarts} onEnded={detectVideoEnds}>
+                <video preload="auto" height="720px" id="Conducir contra vía" ref={video} onDurationChange={detectVideoStarts} onEnded={detectVideoEnds}>
                     <source src='/exp/webm/ConducirContraVia.webm' type="video/webm" />
                     <source src='/exp/mp4/ConducirContraVia.mp4' type="video/mp4" />
                 </video>

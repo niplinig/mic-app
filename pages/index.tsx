@@ -62,7 +62,7 @@ export default function App() {
               No recopilamos ningún dato que lo pueda indentificar.
             </Collapse>
             <Collapse title="¿Por qué recopilamos esos datos?">
-              Los datos serán usados para una investigación sobre los tiempos de reacción de las persona
+              Los datos serán usados para una investigación sobre los tiempos de reacción de las personas
               al percibir sucesos en vías de tránsito. Esta investigación se lleva a cabo por un grupo de investigación conformado por
               estudiantes universitarios.
             </Collapse>
@@ -72,7 +72,7 @@ export default function App() {
             <Collapse title="¿Qué se harán con esos datos?">
               Se realizará un análisis de los tiempos de reacción de las personas con respecto a su edad y sexo.
             </Collapse>
-            <Collapse title="¿Qué se harán después?">
+            <Collapse title="¿Qué se hará después?">
               Una vez terminada la investigación se procederá a eliminar todos los datos de la base de datos.
             </Collapse>
             <Collapse title="¿Qué puede esperar de nosotros?">
