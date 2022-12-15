@@ -1,18 +1,17 @@
-import { Loading, Button, Display, Tabs, useTabs, KeyCode, useKeyboard, useToasts } from "@geist-ui/core";
+import { Note, Keyboard, Button, Display, useTabs, KeyCode, useKeyboard, useToasts } from "@geist-ui/core";
 import { useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 let videoStart: string = '';
 let videoEnd: string = '';
 let reactionTime: string = '';
 let reactionStart: string = '';
 
-export function LoadingScreen() {
-    return (
-        <Loading>Cargando</Loading>
-    )
-};
-
 export default function App() {
+
+    const router = useRouter();
+
+    const [videoEnded, setVideoEnded] = useState(false);
 
     const video: any = useRef<HTMLVideoElement>(null);
 
@@ -29,7 +28,7 @@ export default function App() {
     const detectVideoStarts = () => {
         let date = new Date();
         videoStart = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
-        console.log(`videoStart: ${videoStart}`);
+        setVideoEnded(false);
     }
 
     useKeyboard(
@@ -39,8 +38,7 @@ export default function App() {
                     let date = new Date();
                     reactionTime = `${video.current.currentTime}`;
                     reactionStart = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
-                    console.log(`reactionTime ${reactionTime}, reactionStart: ${reactionStart}`);
-                    setToast({ text: 'Reacción guardada', delay: 2000 });
+                    setToast({ type: "success", text: 'Reacción guardada', delay: 2000 });
                 }
 
             }
@@ -51,16 +49,21 @@ export default function App() {
     const detectVideoEnds = async () => {
         let date = new Date();
         videoEnd = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
-        console.log(`videoEnd: ${videoEnd}`);
+        
 
-        postData();
-        changePage();
+        if (reactionTime == '') {
+            setVideoEnded(true);
+        } else {
+            postData();
+            changePage();
+        }
     }
 
     const changePage = () => {
         let previus = state;
         let result: string = `${Number(previus) + 1}`
         setState(result);
+        router.push('/videos/3')
     }
 
     const postData = async () => {
@@ -85,25 +88,20 @@ export default function App() {
             },
         })
         const data = await response.json()
-        console.log(data);
     }
 
 
     return (
         <div>
-            <Tabs {...bindings} initialValue="1" align="center" leftSpace={0}>
-            <Tabs.Item label="Video 2" value="1">
-                    <Display shadow caption={   
-                        <Button onClick={togglePlay}>Play Video</Button>
-                    }>
-                        <video preload="auto" height="720px" id="Pasar la luz roja 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
-                            <source src='/videos/mp4/PasarLaLuzRoja1.mp4' type="video/mp4" />
-                            <source src='/videos/webm/PasarLaLuzRoja1.webm' type="video/webm" />
-                        </video>
-                    </Display>
-                </Tabs.Item>
-            </Tabs>
+            {reactionTime == '' && videoEnded && <Note type="warning" label="NOTA" filled>Recuerda presionar <Keyboard>R</Keyboard> cuando perciba una infracción</Note>}
+            <Display width={80} shadow caption={
+                <Button onClick={togglePlay}>Reproducir video</Button>
+            }>
+                <video preload="auto" id="Pasar la luz roja 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                    <source src='/exp/webm/PasarLaLuzRoja1.webm' type="video/webm" />
+                    <source src='/exp/mp4/PasarLaLuzRoja1.mp4' type="video/mp4" />
+                </video>
+            </Display>
         </div>
-
     );
 }
