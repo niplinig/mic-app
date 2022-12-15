@@ -94,10 +94,10 @@ export default function App() {
     return (
         <div>
             {reactionTime == '' && videoEnded && <Note type="warning" label="NOTA" filled>Recuerda presionar <Keyboard>R</Keyboard> cuando perciba una infracción</Note>}
-            <Display width={80} shadow caption={
+            <Display shadow caption={
                 <Button onClick={togglePlay}>Reproducir video</Button>
             }>
-                <video preload="auto" height="720px" id="Pasar la luz roja 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
+                <video preload="auto" className="max-w-screen-md" id="Pasar la luz roja 1" ref={video} onPlay={detectVideoStarts} onEnded={detectVideoEnds}>
                     <source src='/exp/webm/PasarLaLuzRoja1.webm' type="video/webm" />
                     <source src='/exp/mp4/PasarLaLuzRoja1.mp4' type="video/mp4" />
                 </video>
