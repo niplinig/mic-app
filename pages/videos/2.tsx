@@ -15,10 +15,6 @@ export default function App() {
 
     const video: any = useRef<HTMLVideoElement>(null);
 
-    const { state, setState, bindings } = useTabs('1');
-
-    const [loading, setLoading] = useState(false);
-
     const { setToast } = useToasts()
 
     const togglePlay = () => {
@@ -60,9 +56,6 @@ export default function App() {
     }
 
     const changePage = () => {
-        let previus = state;
-        let result: string = `${Number(previus) + 1}`
-        setState(result);
         router.push('/videos/3')
     }
 
@@ -80,7 +73,7 @@ export default function App() {
                 reactionTime: reactionTime,
                 reactionStart: reactionStart,
                 videoEnd: videoEnd,
-                videoNumber: Number(state),
+                videoNumber: 2,
                 videoName: video.current.id,
             }),
             headers: {
