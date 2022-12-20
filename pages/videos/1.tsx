@@ -1,4 +1,4 @@
-import { Loading, Note, Button, Display, Tabs, useTabs, KeyCode, useKeyboard, useToasts, Divider, Keyboard } from "@geist-ui/core";
+import { Modal, Note, Button, Display, Tabs, useTabs, KeyCode, useKeyboard, useToasts, Divider, Keyboard } from "@geist-ui/core";
 import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -8,6 +8,15 @@ let reactionTime: string = '';
 let reactionStart: string = '';
 
 export default function App() {
+
+    const [visible, setVisible] = useState(true)
+
+    const openHandler = () => {
+        setVisible(true);
+    }
+    const closeHandler = () => {
+        setVisible(false);
+    }
 
     const router = useRouter();
 
@@ -85,7 +94,14 @@ export default function App() {
 
     return (
         <div>
-            {reactionTime == '' && videoEnded && <Note type="warning" label="NOTA" filled>Recuerda presionar <Keyboard>R</Keyboard> cuando perciba una infracción</Note>}
+            <Modal visible={visible} onClose={closeHandler}>
+                <Modal.Title>
+                    Contexto
+                </Modal.Title>
+                <Modal.Content>
+                    Usted se desplaza a la velocidad maxima permitida.
+                </Modal.Content>
+            </Modal>
             <Display shadow caption={
                 <Button onClick={togglePlay}>Reproducir video</Button>
             }>

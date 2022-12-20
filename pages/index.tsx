@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 export default function App() {
 
   const [sex, setSex] = useState('');
+  const [license, setLicense] = useState('');
   const [check, setCheck] = useState(false);
   const [visible, setVisible] = useState(false)
   const { state, setState, reset, bindings } = useInput('');
@@ -24,6 +25,10 @@ export default function App() {
 
   const sexHandler = (value: any) => {
     setSex(value);
+  }
+
+  const licenseHandler = (value: any) => {
+    setLicense(value);
   }
 
   const validateAge = (inputAge: string) => {
@@ -50,7 +55,7 @@ export default function App() {
     <div>
       <Modal visible={visible} onClose={closeHandler}>
         <Modal.Title>
-          Condiciones de participar
+          Condiciones de participación
         </Modal.Title>
         <Modal.Subtitle>
           Lea las condiciones de participar antes de aceptar
@@ -88,12 +93,11 @@ export default function App() {
         <Grid alignContent="center" justify="center" alignItems="center">
           <Card shadow>
             <Card.Content>
-              <Text h3>Formulario de inicio</Text>
-              <Text>Por favor llena el siguiente formulario para poder continuar</Text>
+              <Text h3>Gracias por colaborar con nuestra investigación</Text>
+              <Text>Antes de comenzar requerimos la siguiente información</Text>
             </Card.Content>
             <Card.Content>
-              <Text>Edad</Text>
-              <Input type={ageErrorMsg ? "error" : "default"} {...bindings} htmlType="number" width="100%" maxLength={3} />
+              <Input label="Edad" type={ageErrorMsg ? "error" : "default"} {...bindings} htmlType="number" width="100%" maxLength={3} />
               <Text type="error">{ageErrorMsg}</Text>
               <Text>Sexo</Text>
               <Radio.Group useRow value={sex} onChange={sexHandler}>
@@ -101,11 +105,17 @@ export default function App() {
                 <Radio value="Masculino">Masculino</Radio>
               </Radio.Group>
               <Divider h="0px" my={3} />
+              <Text>¿Tiene licencia de conducir?</Text>
+              <Radio.Group useRow value={license} onChange={licenseHandler}>
+                <Radio value="Si">Si</Radio>
+                <Radio value="No">No</Radio>
+              </Radio.Group>
+              <Divider h="0px" my={3} />
               <Checkbox onChange={checkHandler} type="success">
-                Acepto las <Link href="#" onClick={openHandler} block>condiciones de participar</Link>
+                Acepto las <Link href="#" onClick={openHandler} block>condiciones de participación</Link>
               </Checkbox>
               <Divider h="0px" my={3} />
-              <Button disabled={(ageErrorMsg || state == '' || sex == '' || !check) ? true : false} width="100%" onClick={btnHandler}>
+              <Button type="success" disabled={(ageErrorMsg || state == '' || sex == '' || license == '' || !check) ? true : false} width="100%" onClick={btnHandler}>
                 Continuar
               </Button>
 
