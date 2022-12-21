@@ -90,7 +90,6 @@ export default function VideosPage() {
     const [pageNumber, setPageNumber] = useState(0)
     const [visible, setVisible] = useState(true)
     const video: any = useRef<HTMLVideoElement>(null);
-    const [videoEnded, setVideoEnded] = useState(false);
 
     const closeHandler = () => {
         setVisible(false);
@@ -163,13 +162,11 @@ export default function VideosPage() {
     const detectVideoStarts = () => {
         let videoStartDate = new Date();
         videoStart = `${videoStartDate.getFullYear()}/${videoStartDate.getMonth()}/${videoStartDate.getDay()} ${videoStartDate.getHours()}:${videoStartDate.getMinutes()}:${videoStartDate.getSeconds()}`
-        setVideoEnded(false);
     }
 
     const detectVideoEnds = async () => {
         let date = new Date();
         videoEnd = `${date.getFullYear()}/${date.getMonth()}/${date.getDay()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-        setVideoEnded(true);
         postData();
         nextVideo();
     }
@@ -179,6 +176,7 @@ export default function VideosPage() {
         let age = localStorage.getItem('age');
         let sex = localStorage.getItem('sex');
         let license = localStorage.getItem('license');
+        let diferenceReaction = `${Math.abs(Number(reactionSeconds) - videoArray[pageNumber].infractionStart)}`
 
         const response = await fetch('/api/reaction', {
             method: 'POST',
@@ -191,8 +189,8 @@ export default function VideosPage() {
                 reactionStart: reactionStart,
                 videoEnd: videoEnd,
                 videoNumber: pageNumber,
-                videoName: video.current.id,
-                diferenceReaction: Number(reactionSeconds) - videoArray[pageNumber].infractionStart
+                videoName: videoArray[pageNumber].name,
+                diferenceReaction: diferenceReaction
             }),
             headers: {
                 'Content-Type': 'application/json',

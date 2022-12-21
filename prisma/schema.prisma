@@ -14,7 +14,7 @@ model Post {
   videoName     String   @db.VarChar(50)
   videoStart    String   @db.VarChar(50)
   videoEnd      String   @db.VarChar(50)
-  reactionTime  String   @db.VarChar(50)
+  reactionSeconds  String   @db.VarChar(50)
   reactionStart String   @db.VarChar(50)
   diferenceReaction String @db.VarChar(50)
   license       String   @db.VarChar(10)
