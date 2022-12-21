@@ -48,6 +48,7 @@ export default function App() {
   const btnHandler = () => {
     localStorage.setItem('age', state);
     localStorage.setItem('sex', sex);
+    localStorage.setItem('license', license);
     router.push("/videos/inicio");
   }
 

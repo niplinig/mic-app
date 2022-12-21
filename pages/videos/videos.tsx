@@ -1,4 +1,4 @@
-import { useKeyboard, Modal, Button, Toast } from "@geist-ui/core";
+import { useToasts, useKeyboard, Modal, Button, Toast } from "@geist-ui/core";
 import { useRouter } from "next/router";
 import { useState, useRef } from "react";
 
@@ -68,9 +68,16 @@ const VideoArray: pageInfo[] = [
         contextContent: ""
     },
 ]
+
+let videoStart: string = '';
+let videoEnd: string = '';
+let reactionTime: string = '';
+let reactionStart: string = '';
+
 export default function VideosPage() {
 
     const router = useRouter();
+    const { setToast } = useToasts();
     const [pageNumber, setPageNumber] = useState(0)
     const [visible, setVisible] = useState(true)
     const video: any = useRef<HTMLVideoElement>(null);
@@ -99,11 +106,36 @@ export default function VideosPage() {
                     reactionStart = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:}`
                     setToast({ type: "success", text: 'Reacción guardada', delay: 2000 });
                 }
-
             }
         },
-        [KeyCode.KEY_R],
+        [],
     )
+
+    const postData = async () => {
+
+        let age = localStorage.getItem('age');
+        let sex = localStorage.getItem('sex');
+        let license = localStorage.getItem('license');
+
+        const response = await fetch('/api/reaction', {
+            method: 'POST',
+            body: JSON.stringify({
+                age: Number(age),
+                sex: sex,
+                license: license,
+                videoStart: videoStart,
+                reactionTime: reactionTime,
+                reactionStart: reactionStart,
+                videoEnd: videoEnd,
+                videoNumber: 2,
+                videoName: video.current.id,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        const data = await response.json()
+    }
 
     return (
         <div>
