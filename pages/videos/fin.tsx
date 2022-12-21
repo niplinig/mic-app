@@ -15,7 +15,7 @@ export default function App() {
                         <Text p>
                             Los datos recopilados son almacenados para su posterior análisis.
                             Procuramos su confidencialidad, los datos serán procesados con fines
-                            meramente académicos
+                            meramente académicos.
                         </Text>
                     </Card.Content>
                 </Card>

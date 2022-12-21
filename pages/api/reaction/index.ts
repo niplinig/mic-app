@@ -34,6 +34,9 @@ export default async function handler(
       videoEnd,
       reactionTime,
       reactionStart,
+      diferenceSeconds,
+      diferenceReaction,
+      license,
       age,
       sex,
      } = req.body
@@ -55,6 +58,8 @@ export default async function handler(
         videoEnd: videoEnd,
         reactionTime: reactionTime,
         reactionStart: reactionStart,
+        diferenceReaction: diferenceReaction,
+        license: license,
         age: age,
         sex: sex
       },
