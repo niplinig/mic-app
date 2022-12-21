@@ -8,7 +8,7 @@ export default function App() {
     const [visible, setVisible] = useState(false)
 
     const btnHandler = () => {
-        router.push("/videos/videos");
+        router.push("/videos/");
     }
 
     return (
