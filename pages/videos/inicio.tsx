@@ -22,7 +22,7 @@ export default function App() {
                         <Divider h="1px" my={0} />
                         <Card.Content>
                             <Text p>
-                                Se mostrarán 5 videos grabados en vehículos en movimiento. Usted debe presionar la tecla R cuando crea haber visto una infracción de transito. Luego espere hasta que se cargue el siguiente video.
+                                Se mostrarán 5 videos grabados en vehículos en movimiento. Usted debe presionar cualquier letra de su teclado solo una vez cuando crea haber visto una infracción de transito. Luego espere hasta que se cargue el siguiente video.
                             </Text>
                             <Text>
                                 Ejemplo de infracciones:
