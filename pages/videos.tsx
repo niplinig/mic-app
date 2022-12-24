@@ -33,7 +33,7 @@ const videoArray: pageInfo[] = [
         webmSrc: "/exp/webm/SinCasco.webm",
         name: "Conducir sin casco",
         contextTitle: "Contexto del video",
-        contextContent: "El conductor y los acompañantes, de motocicletas que no utilicen adecuadamente casco de seguridad, estan cometiendo una infracción de tránsito.",
+        contextContent: "Usted se encuentra en una vía urbana.",
         infractionStart: 1
     },
     {
@@ -41,7 +41,7 @@ const videoArray: pageInfo[] = [
         webmSrc: "",
         name: "Conducir con teléfono",
         contextTitle: "Contexto del video",
-        contextContent: "El conductor que utilice el teléfono celular mientras conduce está cometiendo una infracción de tránsito.",
+        contextContent: "Usted está esperando que cambie la luz roja del semáforo.",
         infractionStart: 3
     },
     {
@@ -49,7 +49,7 @@ const videoArray: pageInfo[] = [
         webmSrc: "",
         name: "Invadir carril de circulación",
         contextTitle: "Contexto del video",
-        contextContent: "El conductor que no respete el derecho preferente de los ciclistas en avenidas, carreteras y ciclovías, está cometiendo una infracción de tránsito.",
+        contextContent: "Usted está esperando avanzar y no puede invadir el carril de la ciclovía.",
         infractionStart: 1
     },
     {
@@ -57,7 +57,7 @@ const videoArray: pageInfo[] = [
         webmSrc: "/exp/webm/PasarLaLuzRoja1.webm",
         name: "Pasar la luz roja del semáforo",
         contextTitle: "Contexto del video",
-        contextContent: "Usted se encuentra en una vía con un semáforo.",
+        contextContent: "Usted está esperando que cambie la luz roja del semáforo.",
         infractionStart: 3
     },
     {
@@ -117,7 +117,7 @@ export default function VideosPage() {
     useKeyboard(
         () => {
             if (video.current !== null) {
-                if (video.current.currentTime > 0 && !video.current.ended) {
+                if (video.current.currentTime > 0 && !video.current.ended && reactionStart == '') {
                     let reactionStartDate = new Date();
                     reactionSeconds = `${video.current.currentTime}`;
                     reactionStart = `${reactionStartDate.getFullYear()}/${reactionStartDate.getMonth()}/${reactionStartDate.getDay()} ${reactionStartDate.getHours()}:${reactionStartDate.getMinutes()}:${reactionStartDate.getSeconds()}`
@@ -209,6 +209,9 @@ export default function VideosPage() {
                 <Modal.Content>
                     {videoArray[pageNumber].contextContent}
                 </Modal.Content>
+                <Modal.Action onClick={closeHandler}>
+                    Continuar
+                </Modal.Action>
             </Modal>
             <Display shadow caption={
                 <Button type="success" onClick={togglePlay}>Reproducir video</Button>
