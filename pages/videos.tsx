@@ -1,4 +1,4 @@
-import { KeyCode, Display, useToasts, useKeyboard, Modal, Button, Progress, Text } from "@geist-ui/core";
+import { KeyCode, Display, useToasts, useKeyboard, Modal, Button, Progress, Text, Spinner, Loading } from "@geist-ui/core";
 import { useRouter } from "next/router";
 import { useState, useRef, useEffect } from "react";
 
@@ -38,7 +38,7 @@ const videoArray: pageInfo[] = [
     },
     {
         mp4Src: "/exp/mp4/ConducirConTelefono.mp4",
-        webmSrc: "",
+        webmSrc: "/exp/webm/ConducirConTelefono.webm",
         name: "Conducir con teléfono",
         contextTitle: "Contexto del video",
         contextContent: "Usted está esperando que cambie la luz roja del semáforo.",
@@ -46,7 +46,7 @@ const videoArray: pageInfo[] = [
     },
     {
         mp4Src: "/exp/mp4/InvadirCarril.mp4",
-        webmSrc: "",
+        webmSrc: "/exp/webm/InvadirCarril.webm",
         name: "Invadir carril de circulación",
         contextTitle: "Contexto del video",
         contextContent: "Usted está esperando avanzar y no puede invadir el carril de la ciclovía.",
@@ -62,7 +62,7 @@ const videoArray: pageInfo[] = [
     },
     {
         mp4Src: "/exp/mp4/PasarElPare.mp4",
-        webmSrc: "",
+        webmSrc: "/exp/webm/PasarElPare.webm",
         name: "Pasar el pare",
         contextTitle: "Contexto del video",
         contextContent: "Usted se encuentra en una vía donde usted tiene la preferencia de cruzar primero.",
@@ -91,19 +91,29 @@ export default function VideosPage() {
     const [visible, setVisible] = useState(true)
     const video: any = useRef<HTMLVideoElement>(null);
     const [progress, setProgress] = useState(0);
+    const [loadVar, setLoadVar] = useState(false);
+
+
+    const changeProgress = () => {
+        if (video.current !== null) {
+            setProgress((progress) => Math.round((video.current.currentTime / video.current.duration) * 100));
+        }
+    }
 
     useEffect(() => {
-        let interval = setInterval(() => {
-            if (video.current !== null) {
-                setProgress((progress) => Math.round((video.current.currentTime / video.current.duration) * 100));
-            }
-        })
+        let interval = setInterval(changeProgress, 10);
         
         return () => {
             clearInterval(interval);
         }
         
     })
+
+    const videoLoaded = () => {
+        if (loadVar == false) {
+            setLoadVar(true);
+        }
+    }
 
     const closeHandler = () => {
         setVisible(false);
@@ -121,6 +131,7 @@ export default function VideosPage() {
             setPageNumber(pageNumber + 1)
             setVisible(true);
             resetData();
+            setLoadVar(false);
             video.current.load();
         }
         else {
@@ -227,13 +238,14 @@ export default function VideosPage() {
                     Continuar
                 </Modal.Action>
             </Modal>
+            
             <Progress value={progress} type="success"></Progress>
             <Text>Video {pageNumber + 1} de {videoArray.length}</Text>
             <Display shadow caption={
                 <Button type="success" onClick={togglePlay}>Reproducir video</Button>
             }>
-
-                <video className="max-w-screen-md" preload="auto" ref={video} onDurationChange={detectVideoStarts} onEnded={detectVideoEnds}>
+                {loadVar == false && <Loading>Cargando</Loading>}
+                <video className="max-w-screen-md" preload="auto" ref={video} onDurationChange={detectVideoStarts} onEnded={detectVideoEnds} onLoadedData={videoLoaded}>
                     <source src={videoArray[pageNumber].mp4Src} type="video/mp4" />
                     <source src={videoArray[pageNumber].webmSrc} type="video/webm" />
                 </video>
