@@ -24,7 +24,7 @@ export default function App() {
                             <Text p>
                                 Se mostrarán 8 videos grabados en vehículos en movimiento e información de contexto.
                                 Por cada video usted debe presionar <Text b>cualquier tecla</Text> cuando crea haber visto una <Text b>infracción de tránsito</Text> y esperar que se cargue el siguiente video.
-
+                                Solo se detecta la <Text b>PRIMERA</Text> infracción.
                             </Text>
                             <Text>
                                 Ejemplo de infracciones:
