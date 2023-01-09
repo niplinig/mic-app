@@ -1,6 +1,6 @@
-import { KeyCode, Display, useToasts, useKeyboard, Modal, Button, Toast } from "@geist-ui/core";
+import { KeyCode, Display, useToasts, useKeyboard, Modal, Button, Progress, Text } from "@geist-ui/core";
 import { useRouter } from "next/router";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface pageInfo {
     mp4Src: string;
@@ -90,6 +90,20 @@ export default function VideosPage() {
     const [pageNumber, setPageNumber] = useState(0)
     const [visible, setVisible] = useState(true)
     const video: any = useRef<HTMLVideoElement>(null);
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        let interval = setInterval(() => {
+            if (video.current !== null) {
+                setProgress((progress) => Math.round((video.current.currentTime / video.current.duration) * 100));
+            }
+        })
+        
+        return () => {
+            clearInterval(interval);
+        }
+        
+    })
 
     const closeHandler = () => {
         setVisible(false);
@@ -213,6 +227,8 @@ export default function VideosPage() {
                     Continuar
                 </Modal.Action>
             </Modal>
+            <Progress value={progress} type="success"></Progress>
+            <Text>Video {pageNumber + 1} de {videoArray.length}</Text>
             <Display shadow caption={
                 <Button type="success" onClick={togglePlay}>Reproducir video</Button>
             }>
