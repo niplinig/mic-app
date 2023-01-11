@@ -40,7 +40,7 @@ export default function App() {
                                     Conductor y/o acompañantes de motocicletas que no utilicen adecuadamente casco de seguridad.
                                 </li>
                                 <li>
-                                    Conductor usando el celular mientras el auto está en movimiento.
+                                    Conductor usando el celular mientras el vehículo está en movimiento.
                                 </li>
                                 <li>
                                     Invadir el carril de circulación.

@@ -22,7 +22,7 @@ const videoArray: pageInfo[] = [
     },
     {
         mp4Src: "/exp/mp4/ConducirContraVia.mp4",
-        webmSrc: "/exp/webm/ConducirContraVia.webm",
+        webmSrc: "public/exp/webm/ConducirContraVia.webm",
         name: "Conducir en contra vía",
         contextTitle: "Contexto del video",
         contextContent: "Usted se encuentra en una vía de un solo sentido.",
@@ -240,11 +240,11 @@ export default function VideosPage() {
             </Modal>
             
             <Progress value={progress} type="success"></Progress>
-            <Text>Video {pageNumber + 1} de {videoArray.length}</Text>
+            <Text className="text-center">Video {pageNumber + 1} de {videoArray.length}</Text>
             <Display shadow caption={
                 <Button type="success" onClick={togglePlay}>Reproducir video</Button>
             }>
-                {loadVar == false && <Loading>Cargando</Loading>}
+                {loadVar == false && <Loading className="max-w-screen-md">Cargando</Loading>}
                 <video className="max-w-screen-md" preload="auto" ref={video} onDurationChange={detectVideoStarts} onEnded={detectVideoEnds} onLoadedData={videoLoaded}>
                     <source src={videoArray[pageNumber].mp4Src} type="video/mp4" />
                     <source src={videoArray[pageNumber].webmSrc} type="video/webm" />

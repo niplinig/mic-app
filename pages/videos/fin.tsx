@@ -1,7 +1,7 @@
-import { Text, Divider, Keyboard, Grid, Card } from "@geist-ui/core";
+import { Text, Divider, Grid, Card } from "@geist-ui/core";
 
 export default function App() {
-
+  
     return (
         <div>
         <Grid.Container justify="center" direction="column" alignContent="center" alignItems="center" height="100vh">
