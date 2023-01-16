@@ -37,7 +37,7 @@ export default function App() {
             if (video.current !== null) {
                 if (video.current.currentTime > 0 && !video.current.ended) {
                     let date = new Date();
-                    reactionTime = `${video.current.currentTime}`;
+                    reactionTime = video.current.currentTime.toFixed(2);
                     reactionStart = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
                     console.log(`reactionTime ${reactionTime}, reactionStart: ${reactionStart}`);
                     setToast({ text: 'Reacción guardada', delay: 2000 });

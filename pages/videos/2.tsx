@@ -81,7 +81,7 @@ export default function VideosPage() {
         let diferenceReaction = '0';
 
         if (infractionSeconds != null) {
-            diferenceReaction = `${Math.abs(Number(reactionSeconds) - infractionSeconds)}`
+            diferenceReaction = Math.abs(Number(reactionSeconds) - infractionSeconds).toFixed(2)
         }
 
         const response = await fetch('/api/reaction', {
@@ -135,7 +135,7 @@ export default function VideosPage() {
             }
             if (video.current.played && !video.current.ended && reactionStart.length == 0) {
                 let reactionStartDate = new Date();
-                reactionSeconds = `${video.current.currentTime}`;
+                reactionSeconds = video.current.currentTime.toFixed(2);
                 reactionStart = `${reactionStartDate.getFullYear()}/${reactionStartDate.getMonth() + 1}/${reactionStartDate.getDay()} ${reactionStartDate.getHours()}:${reactionStartDate.getMinutes()}:${reactionStartDate.getSeconds()}`;
                 console.log('reactionStart', reactionStart, 'reactionSeconds', reactionSeconds);
                 setNoteText('Espere hasta que termine el video');
