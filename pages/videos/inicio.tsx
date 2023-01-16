@@ -165,7 +165,7 @@ let videoSlicedNoExp: videoData[] = videoNoExpArray.slice(0, 5);
 
 console.log(videoSlicedNoExp);
 
-export let videoArray: videoData[] = videoSlicedExp.concat(videoSlicedNoExp);
+export let videoArray: videoData[] = [].concat(videoSlicedExp, videoSlicedNoExp);
 
 console.log(videoArray);
 
