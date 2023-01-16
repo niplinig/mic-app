@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 
 
 // Local imports
-import { videoData } from "../videos";
-import { videoArray } from "../videos";
+import { videoData } from "./inicio";
+import { videoArray } from "./inicio";
 
 
 let videoStart: string = '';
