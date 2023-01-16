@@ -1,0 +1,79 @@
+gradoX = c(568, 570,575,578,584)
+gradoY = c(573,574,575,577,578)
+
+// a)
+summary(gradoX)
+summary(gradoY)
+
+sd(gradoX)
+sd(gradoY)
+
+boxplot(gradoX, gradoY)
+
+// b)
+// Las llantas de grado Y está proveyendo mejor calidad debido
+// a que la mayoría de sus diámetros internos son cercanos a 575 milímetros.
+// Ademas las llantas de grado Y tienen una menor varianza (2.07) que las de grado X (6.40),
+// por lo que los valores son más cercanos a los de la media 575 milímetros.
+// El rango de las llantas de grado Y es menor que el de las llantas X, debido a esto,
+// los valores de diámetro las llantas de grado Y son más cercanos al valor de 575 milímetros.
+
+
+// c)
+gradoYAlternativo = c(573,574,575,577,588)
+
+summary(gradoYAlternativo)
+sd(gradoYAlternativo)
+
+boxplot(gradoX, gradoYAlternativo)
+
+// Las llantas de grado Y cambian su media a 577, estándo más lejos del valor de 575 milímetros.
+// Además de cambiar también su desbiación estandar de 2.0 a 6.10.
+// Las llantas de grado Y siguen siendo de mejor calidad que las llantas de grado X, porque
+// a pesar de tener una una media mayor, el rango de las llantas de grado Y sigue siendo más
+// cercano al valor de 575 milímetros.
+
+
+
+camionetas = c(24,23,22,21,22,22,18,18,26,26,26,19,19,19,21,21,21,21,21,18,19,21,22,22,16,16)
+
+sort(camionetas)
+
+summary(camionetas)
+
+// min = 16
+// 1st Qu = 19
+// Median = 21
+// Mean = 20.92
+// 3rd Qu = 22.00
+// Max = 26.00
+
+boxplot(camionetas)
+
+// La diferencia entra quartiles es de 3
+22.00 - 19.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
