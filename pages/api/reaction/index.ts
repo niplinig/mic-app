@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from "@prisma/client";
 
-const prisma : PrismaClient = new PrismaClient()
+const prisma: PrismaClient = new PrismaClient()
 
 // POST /api
 
@@ -11,56 +11,56 @@ export default async function handler(
   res: NextApiResponse
 ) {
 
-/*   await NextCors(req, res, {
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    origin: '*',
-    optionsSuccessStatus: 200,
-  }) */
+  /*   await NextCors(req, res, {
+      methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+      origin: '*',
+      optionsSuccessStatus: 200,
+    }) */
 
-/*   if (req.method === 'GET') {
-
-    const result = await prisma.post.findMany();
-    console.table(result);
-    res.status(200).json(result);
-
-  } */
+  /*   if (req.method === 'GET') {
+  
+      const result = await prisma.post.findMany();
+      console.table(result);
+      res.status(200).json(result);
+  
+    } */
 
   if (req.method === 'POST') {
 
     const {
-      videoNumber,
-      videoName,
-      videoStart,
-      videoEnd,
-      reactionSeconds,
-      reactionStart,
-      diferenceReaction,
-      license,
       age,
       sex,
-     } = req.body
+      license,
+      videoStart,
+      reactionSeconds,
+      reactionStart,
+      videoEnd,
+      videoNumber,
+      videoName,
+      diferenceReaction,
+    } = req.body
 
-     /** Example to test the API {
-          "videoStart": "test",
-          "videoEnd": "test",
-          "reactionStart": "test",
-          "reactionEnd": "test",
-          "age": 123,
-          "sex": "test"
-        }
-      */
+    /** Example to test the API {
+         "videoStart": "test",
+         "videoEnd": "test",
+         "reactionStart": "test",
+         "reactionEnd": "test",
+         "age": 123,
+         "sex": "test"
+       }
+     */
     const result = await prisma.post.create({
       data: {
-        videoNumber: videoNumber,
-        videoName: videoName,
+        age: age,
+        sex: sex,
+        license: license,
         videoStart: videoStart,
-        videoEnd: videoEnd,
         reactionSeconds: reactionSeconds,
         reactionStart: reactionStart,
+        videoEnd: videoEnd,
+        videoNumber: videoNumber,
+        videoName: videoName,
         diferenceReaction: diferenceReaction,
-        license: license,
-        age: age,
-        sex: sex
       },
     })
 
