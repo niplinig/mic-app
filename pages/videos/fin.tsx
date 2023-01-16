@@ -8,15 +8,7 @@ export default function App() {
             <Grid>
                 <Card shadow width="60vw">
                     <Card.Content>
-                        <Text h2>Gracias por participar</Text>
-                    </Card.Content>
-                    <Divider h="1px" my={0} />
-                    <Card.Content>
-                        <Text p>
-                            Los datos recopilados son almacenados para su posterior análisis.
-                            Procuramos su confidencialidad, los datos serán procesados con fines
-                            meramente académicos.
-                        </Text>
+                        <Text h2>Muchas gracias por participar</Text>
                     </Card.Content>
                 </Card>
             </Grid>
