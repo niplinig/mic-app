@@ -69,16 +69,40 @@ let videoExpArray: videoData[] = [
     },
     {
         videoNumber: 9,
-        mp4Source: "/exp/mp4/EXP1.mp4",
-        videoName: "Vuelta en U",
+        mp4Source: "/exp/mp4/1.mp4",
+        videoName: "Giro sin usar las direccionales",
         contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
-        infractionSeconds: 3
+        infractionSeconds: 5
     }, {
         videoNumber: 10,
-        mp4Source: "/exp/mp4/EX2.mp4",
-        videoName: "Vuelta en U",
+        mp4Source: "/exp/mp4/2.mp4",
+        videoName: "Pasarse una luz roja",
         contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
-        infractionSeconds: 3
+        infractionSeconds: 11
+    }, {
+        videoNumber: 11,
+        mp4Source: "/exp/mp4/3.mp4",
+        videoName: "Pasarse una luz roja",
+        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
+        infractionSeconds: 6
+    }, {
+        videoNumber: 12,
+        mp4Source: "/exp/mp4/4.mp4",
+        videoName: "Cambiar de carril sin usar las direccionales",
+        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
+        infractionSeconds: 7
+    }, {
+        videoNumber: 13,
+        mp4Source: "/exp/mp4/5.mp4",
+        videoName: "Vehículos estacionados en lugares no permitidos",
+        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
+        infractionSeconds: 7
+    }, {
+        videoNumber: 14,
+        mp4Source: "/exp/mp4/6.mp4",
+        videoName: "Cambiar de carril sin usar las direccionales",
+        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
+        infractionSeconds: 7
     }
 ]
 
