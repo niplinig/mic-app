@@ -65,13 +65,13 @@ let videoExpArray: videoData[] = [
     },
     {
         videoNumber: 9,
-        mp4Source: "/exp/mp4/VueltaEnU.mp4",
+        mp4Source: "/exp/mp4/EXP1.mp4",
         videoName: "Vuelta en U",
         contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
         infractionSeconds: 3
     }, {
         videoNumber: 10,
-        mp4Source: "/exp/mp4/VueltaEnU.mp4",
+        mp4Source: "/exp/mp4/EX2.mp4",
         videoName: "Vuelta en U",
         contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
         infractionSeconds: 3
@@ -154,8 +154,15 @@ videoExpArray.sort((a: videoData, b: videoData) => Math.random() - 0.5)
 videoNoExpArray.sort((a: videoData, b: videoData) => Math.random() - 0.5)
 
 let videoSlicedExp : videoData[] = videoExpArray.slice(0, 5);
-let videoSlicedNoExp : videoData[] = videoExpArray.slice(0, 5);
+
+console.log(videoSlicedExp);
+
+let videoSlicedNoExp : videoData[] = videoNoExpArray.slice(0, 5);
+
+console.log(videoSlicedNoExp);
 
 export let videoArray : videoData[] = videoSlicedExp.concat(videoSlicedNoExp);
+
+console.log(videoArray);
 
 videoArray.sort((a: videoData, b: videoData) => Math.random() - 0.5)
