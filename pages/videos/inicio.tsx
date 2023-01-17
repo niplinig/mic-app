@@ -13,10 +13,10 @@ export interface videoData {
 let videoExpArray: videoData[] = [
     {
         videoNumber: 1,
-        mp4Source: "/exp/mp4/ExcesoDeVelocidad.mp4",
-        videoName: "Exceso de velocidad",
-        contextContent: "Usted se desplaza a la velocidad máxima permitida en la carretera.",
-        infractionSeconds: 5
+        mp4Source: "/exp/mp4/1.mp4",
+        videoName: "Cambio de carril sin direccionales",
+        contextContent: "Usted circula por una carretera.",
+        infractionSeconds: 7
     },
     {
         videoNumber: 2,
@@ -29,14 +29,14 @@ let videoExpArray: videoData[] = [
         videoNumber: 3,
         mp4Source: "/exp/mp4/SinCasco.mp4",
         videoName: "Conducir sin casco",
-        contextContent: "Usted se encuentra en una vía urbana.",
+        contextContent: "Usted circula por una calle de un solo sentido.",
         infractionSeconds: 1
     },
     {
         videoNumber: 4,
         mp4Source: "/exp/mp4/ConducirConTelefono.mp4",
         videoName: "Conducir con teléfono",
-        contextContent: "Usted está esperando que cambie la luz roja del semáforo.",
+        contextContent: "Usted está esperando a cruzar una intersección",
         infractionSeconds: 3
     },
     {
@@ -50,7 +50,7 @@ let videoExpArray: videoData[] = [
         videoNumber: 6,
         mp4Source: "/exp/mp4/PasarLaLuzRoja1.mp4",
         videoName: "Pasar la luz roja del semáforo",
-        contextContent: "Usted está esperando que cambie la luz roja del semáforo.",
+        contextContent: "Usted circula por una calle y llega hasta un semáforo en luz roja",
         infractionSeconds: 3
     },
     {
@@ -69,40 +69,64 @@ let videoExpArray: videoData[] = [
     },
     {
         videoNumber: 9,
-        mp4Source: "/exp/mp4/1.mp4",
-        videoName: "Giro sin usar las direccionales",
-        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
+        mp4Source: "/exp/mp4/2.mp4",
+        videoName: "Cambio de carril sin direccional",
+        contextContent: "Usted circula por una calle.",
         infractionSeconds: 5
     }, {
         videoNumber: 10,
-        mp4Source: "/exp/mp4/2.mp4",
-        videoName: "Pasarse una luz roja",
-        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
-        infractionSeconds: 11
+        mp4Source: "/exp/mp4/3.mp4",
+        videoName: "Moto obstruyendo paso peatonal",
+        contextContent: "Usted se encuentra esperando hasta que el semáforo cambie a luz verde.",
+        infractionSeconds: 2
     }, {
         videoNumber: 11,
-        mp4Source: "/exp/mp4/3.mp4",
-        videoName: "Pasarse una luz roja",
-        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
-        infractionSeconds: 6
-    }, {
-        videoNumber: 12,
         mp4Source: "/exp/mp4/4.mp4",
-        videoName: "Cambiar de carril sin usar las direccionales",
-        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
-        infractionSeconds: 7
-    }, {
-        videoNumber: 13,
+        videoName: "Vehículo obstruyendo la calle",
+        contextContent: "Usted avanza por una calle y a su derecha esta permitido estacionar.",
+        infractionSeconds: 2
+    } , {
+        videoNumber: 12,
         mp4Source: "/exp/mp4/5.mp4",
-        videoName: "Vehículos estacionados en lugares no permitidos",
-        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
-        infractionSeconds: 7
-    }, {
-        videoNumber: 14,
+        videoName: "Vehículos estacionados en lugar no permitido",
+        contextContent: "Usted avanza por una calle y a su derecha es prohibido estacionar.",
+        infractionSeconds: 5
+    } , {
+        videoNumber: 13,
         mp4Source: "/exp/mp4/6.mp4",
-        videoName: "Cambiar de carril sin usar las direccionales",
-        contextContent: "Usted se encuentra en una vía en donde no está permitido hacer una vuelta en U.",
-        infractionSeconds: 7
+        videoName: "Girar sin usar direccional",
+        contextContent: "Usted avanza por una calle y se detiene en el semáforo",
+        infractionSeconds: 5
+    } , {
+        videoNumber: 14,
+        mp4Source: "/exp/mp4/7.mp4",
+        videoName: "Pasar la luz roja",
+        contextContent: "Usted avanza por una calle y se detiene en el semáforo",
+        infractionSeconds: 5
+    }   , {
+        videoNumber: 15,
+        mp4Source: "/exp/mp4/8.mp4",
+        videoName: "Pasar la luz roja",
+        contextContent: "Usted se encuentra esperando hasta que el semáforo cambie a luz verde.",
+        infractionSeconds: 5
+    }  , {
+        videoNumber: 16,
+        mp4Source: "/exp/mp4/9.mp4",
+        videoName: "Cambiar de carril sin usar direccional",
+        contextContent: "Usted avanza por una calle",
+        infractionSeconds: 5
+    } , {
+        videoNumber: 17,
+        mp4Source: "/exp/mp4/10.mp4",
+        videoName: "Vehículos estacionados en lugar no permitido",
+        contextContent: "Usted avanza por una calle y a su derecha es prohibido estacionar.",
+        infractionSeconds: 5
+    } , {
+        videoNumber: 18,
+        mp4Source: "/exp/mp4/11.mp4",
+        videoName: "Cambiar de carril sin usar direccional",
+        contextContent: "Usted avanza por una calle.",
+        infractionSeconds: 5
     }
 ]
 
@@ -189,7 +213,7 @@ let videoSlicedNoExp: videoData[] = videoNoExpArray.slice(0, 5);
 
 console.log(videoSlicedNoExp);
 
-export let videoArray: videoData[] = [...videoSlicedExp, ...videoSlicedNoExp];
+export let videoArray: videoData[] = videoSlicedExp.concat(videoSlicedNoExp);
 
 console.log(videoArray);
 
@@ -260,4 +284,4 @@ export default function App() {
             </Grid.Container>
         </div >
     );
-}
+}   
