@@ -132,7 +132,7 @@ let videoExpArray: videoData[] = [
         mp4Source: "/exp/mp4/12.mp4",
         videoName: "Girar sin usar direccional",
         contextContent: "Usted avanza por una avenida y se detiene en la luz roja del semáforo.",
-        infractionSeconds: 5
+        infractionSeconds: 3
     }
     , {
         videoNumber: 20,
@@ -140,6 +140,12 @@ let videoExpArray: videoData[] = [
         videoName: "Pasar luz roja",
         contextContent: "Usted avanza por una avenida y se detiene en la luz roja del semáforo.",
         infractionSeconds: 5
+    }, {
+        videoNumber: 21,
+        mp4Source: "/exp/mp4/14.mp4",
+        videoName: "Cambiar de carril sin usar direccional",
+        contextContent: "Usted avanza por una carretera.",
+        infractionSeconds: 8
     }
 ]
 
