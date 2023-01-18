@@ -49,7 +49,7 @@ let videoExpArray: videoData[] = [
     {
         videoNumber: 6,
         mp4Source: "/exp/mp4/PasarLaLuzRoja1.mp4",
-        videoName: "Pasar la luz roja del semáforo",
+        videoName: "Pasar luz roja",
         contextContent: "Usted circula por una calle y llega hasta un semáforo en luz roja",
         infractionSeconds: 3
     },
@@ -85,47 +85,53 @@ let videoExpArray: videoData[] = [
         videoName: "Vehículo obstruyendo la calle",
         contextContent: "Usted avanza por una calle y a su derecha esta permitido estacionar.",
         infractionSeconds: 2
-    } , {
+    }, {
         videoNumber: 12,
         mp4Source: "/exp/mp4/5.mp4",
         videoName: "Vehículos estacionados en lugar no permitido",
         contextContent: "Usted avanza por una calle y a su derecha es prohibido estacionar.",
         infractionSeconds: 5
-    } , {
+    }, {
         videoNumber: 13,
         mp4Source: "/exp/mp4/6.mp4",
         videoName: "Girar sin usar direccional",
         contextContent: "Usted avanza por una calle y se detiene en el semáforo",
         infractionSeconds: 5
-    } , {
+    }, {
         videoNumber: 14,
         mp4Source: "/exp/mp4/7.mp4",
-        videoName: "Pasar la luz roja",
+        videoName: "Pasar luz roja",
         contextContent: "Usted avanza por una calle y se detiene en el semáforo",
         infractionSeconds: 5
-    }   , {
+    }, {
         videoNumber: 15,
         mp4Source: "/exp/mp4/8.mp4",
-        videoName: "Pasar la luz roja",
+        videoName: "Pasar luz roja",
         contextContent: "Usted se encuentra esperando hasta que el semáforo cambie a luz verde.",
         infractionSeconds: 5
-    }  , {
+    }, {
         videoNumber: 16,
         mp4Source: "/exp/mp4/9.mp4",
         videoName: "Cambiar de carril sin usar direccional",
         contextContent: "Usted avanza por una calle",
         infractionSeconds: 5
-    } , {
+    }, {
         videoNumber: 17,
         mp4Source: "/exp/mp4/10.mp4",
         videoName: "Vehículos estacionados en lugar no permitido",
         contextContent: "Usted avanza por una calle y a su derecha es prohibido estacionar.",
         infractionSeconds: 5
-    } , {
+    }, {
         videoNumber: 18,
         mp4Source: "/exp/mp4/11.mp4",
         videoName: "Cambiar de carril sin usar direccional",
         contextContent: "Usted avanza por una calle.",
+        infractionSeconds: 5
+    }, {
+        videoNumber: 19,
+        mp4Source: "/exp/mp4/12.mp4",
+        videoName: "Pasar luz roja",
+        contextContent: "Usted avanza por una avenida y se detiene en la luz roja del semáforo.",
         infractionSeconds: 5
     }
 ]
@@ -135,69 +141,35 @@ let videoNoExpArray: videoData[] = [
         videoNumber: 1,
         mp4Source: "/noexp/mp4/NON1.mp4",
         videoName: "Sin infracción 1",
-        contextContent: "Usted se encuentra en una carretera.",
+        contextContent: "Usted avanza por una carretera.",
         infractionSeconds: 0
     },
     {
         videoNumber: 2,
         mp4Source: "/noexp/mp4/NON2.mp4",
         videoName: "Sin infracción 2",
-        contextContent: "Usted se encuentra en una carretera.",
+        contextContent: "Usted avanza por una calle.",
         infractionSeconds: 0
     },
     {
         videoNumber: 3,
         mp4Source: "/noexp/mp4/NON3.mp4",
         videoName: "Sin infracción 3",
-        contextContent: "Usted se encuentra en una carretera.",
+        contextContent: "Usted se encuentra en una calle congestionada.",
         infractionSeconds: 0
     },
     {
         videoNumber: 4,
         mp4Source: "/noexp/mp4/NON4.mp4",
         videoName: "Sin infracción 4",
-        contextContent: "Usted se encuentra en una carretera.",
+        contextContent: "Usted avanza por una avenida.",
         infractionSeconds: 0
     },
     {
         videoNumber: 5,
         mp4Source: "/noexp/mp4/NON5.mp4",
         videoName: "Sin infracción 5",
-        contextContent: "Usted se encuentra en una carretera.",
-        infractionSeconds: 0
-    },
-    {
-        videoNumber: 6,
-        mp4Source: "/noexp/mp4/NON6.mp4",
-        videoName: "Sin infracción 6",
-        contextContent: "Usted se encuentra en una carretera.",
-        infractionSeconds: 0
-    },
-    {
-        videoNumber: 7,
-        mp4Source: "/noexp/mp4/NON7.mp4",
-        videoName: "Sin infracción 7",
-        contextContent: "Usted se encuentra en una carretera.",
-        infractionSeconds: 0
-    },
-    {
-        videoNumber: 8,
-        mp4Source: "/noexp/mp4/NON8.mp4",
-        videoName: "Sin infracción 8",
-        contextContent: "Usted se encuentra en una carretera.",
-        infractionSeconds: 0
-    },
-    {
-        videoNumber: 9,
-        mp4Source: "/noexp/mp4/NON9.mp4",
-        videoName: "Sin infracción 9",
-        contextContent: "Usted se encuentra en una carretera.",
-        infractionSeconds: 0
-    }, {
-        videoNumber: 10,
-        mp4Source: "/noexp/mp4/NON10.mp4",
-        videoName: "Sin infracción 10",
-        contextContent: "Usted se encuentra en una carretera.",
+        contextContent: "Usted avanza por una avenida.",
         infractionSeconds: 0
     }
 ]
