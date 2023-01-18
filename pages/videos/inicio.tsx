@@ -164,7 +164,13 @@ let videoExpArray: videoData[] = [
         videoName: "Girar sin usar direccional",
         contextContent: "Usted avanza por una avenida y avanza por un cruce.",
         infractionSeconds: 10
-    }
+    }, {
+        videoNumber: 25,
+        mp4Source: "/exp/mp4/ExcesoDeVelocidad.mp4",
+        videoName: "Exceso de velocidad",
+        contextContent: "Usted avanza por una carretera a la velocidad máxima permitida",
+        infractionSeconds: 1
+    },
 ]
 
 let videoNoExpArray: videoData[] = [
